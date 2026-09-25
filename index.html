@@ -7,26 +7,23 @@
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@700;900&display=swap');
 *{box-sizing:border-box;margin:0;padding:0}
-body{background:#080808;color:#fff;font-family:Arial,sans-serif;padding:15px 15px 40px 15px}
+body{background:#080808;color:#fff;font-family:Arial,sans-serif;padding:20px;max-width:500px;margin:auto}
 .top-bar{text-align:center;padding:20px 0 10px 0}
-.top-bar h1{font-family:'Outfit',sans-serif;font-size:32px;color:#FFD700;letter-spacing:1px;text-shadow:0 0 15px rgba(255,215,0,0.4);text-transform:lowercase}
+.top-bar h1{font-family:'Outfit',sans-serif;font-size:32px;color:#FFD700}
 .top-bar p{color:#999;font-size:13px;margin-top:6px}
 .badge-row{display:flex;gap:8px;justify-content:center;margin:15px 0;flex-wrap:wrap}
-.badge{background:#1a1a1a;border:1px solid #333;padding:6px 12px;border-radius:20px;font-size:11px;color:#aaa}
-.card{background:linear-gradient(145deg,#1e1e1e,#141414);border:2px solid #2a2a2a;border-radius:24px;padding:24px;margin:0 auto 14px auto;max-width:420px;text-align:center}
+.badge{background:#1a1a1a;border:1px solid #333;padding:6px 12px;border-radius:20px;font-size:12px}
+.card{background:linear-gradient(145deg,#1e1e1e,#141414);border:2px solid #222;border-radius:18px;padding:20px;margin:12px 0;text-align:center}
 .card:hover{border-color:#FFD700;box-shadow:0 0 25px rgba(255,215,0,0.15)}
 .card.popular{border-color:#FFD700;position:relative}
-.card.popular::before{content:'EN ÇOK SATAN';position:absolute;top:-11px;left:50%;transform:translateX(-50%);background:#FFD700;color:#000;font-size:10px;font-weight:900;padding:4px 12px;border-radius:20px}
+.card.popular::before{content:'EN ÇOK SATAN';position:absolute;top:-11px;left:50%;transform:translateX(-50%);background:#FFD700;color:#000;font-size:10px;font-weight:900;padding:3px 10px;border-radius:10px}
 .card h3{color:#fff;font-size:22px}
-.price{color:#FFD700;font-size:32px;font-weight:900;margin:10px 0;font-family:'Outfit',sans-serif}
-.btn-gold{background:#FFD700;color:#000;border:none;width:100%;padding:16px;border-radius:14px;font-weight:900;font-size:16px;cursor:pointer}
-.iban-box{background:#111;border:2px dashed #FFD700;padding:24px;border-radius:24px;margin:25px auto;max-width:420px;text-align:center;display:none}
-.nick-input{width:100%;padding:16px;border-radius:12px;border:2px solid #333;background:#000;color:#fff;text-align:center;font-size:16px;margin:14px 0;outline:none}
-.nick-input:focus{border-color:#FFD700}
-.btn-white{background:#fff;color:#000;border:none;width:100%;padding:14px;border-radius:12px;font-weight:800;font-size:15px;margin-top:8px}
-.btn-wp{background:#25D366;color:#fff;border:none;width:100%;padding:16px;border-radius:12px;font-weight:900;font-size:16px;margin-top:10px}
-#toast{position:fixed;bottom:30px;left:50%;transform:translateX(-50%);background:#fff;color:#000;padding:12px 24px;border-radius:30px;font-weight:bold;display:none;z-index:999}
-.footer{text-align:center;color:#555;font-size:11px;margin-top:30px;line-height:1.6}
+.price{color:#FFD700;font-size:32px;font-weight:900;margin:10px 0}
+.btn-gold{background:#FFD700;color:#000;border:none;width:100%;padding:14px;border-radius:12px;font-weight:900;font-size:15px;cursor:pointer}
+.iban-box{background:#111;border:2px dashed #FFD700;padding:14px;border-radius:12px;margin:20px 0;text-align:center}
+.nick-input{width:100%;padding:16px;border-radius:12px;border:2px solid #333;background:#111;color:#fff;margin:8px 0}
+.nick-input:focus{border-color:#FFD700;outline:none}
+#durum{display:none;padding:12px;border-radius:10px;margin-top:12px;text-align:center;font-weight:bold}
 </style>
 </head>
 <body>
@@ -41,44 +38,24 @@ body{background:#080808;color:#fff;font-family:Arial,sans-serif;padding:15px 15p
 </div>
 </div>
 
-<div class="card"><h3>120 BUNG</h3><div class="price">69 TL</div><button class="btn-gold" onclick="showPay('120 BUNG - 69 TL')">BUNG AL</button></div>
-<div class="card popular"><h3>300 BUNG</h3><div class="price">149 TL</div><button class="btn-gold" onclick="showPay('300 BUNG - 149 TL')">BUNG AL</button></div>
-<div class="card"><h3>600 BUNG</h3><div class="price">279 TL</div><button class="btn-gold" onclick="showPay('600 BUNG - 279 TL')">BUNG AL</button></div>
-<div class="card"><h3>1500 BUNG</h3><div class="price">649 TL</div><button class="btn-gold" onclick="showPay('1500 BUNG - 649 TL')">BUNG AL</button></div>
+<div class="card"><h3>120 BUNG</h3><div class="price">69 TL</div><button class="btn-gold" onclick="satinal('120 BUNG - 69 TL')">Satın Al</button></div>
+<div class="card popular"><h3>300 BUNG</h3><div class="price">149 TL</div><button class="btn-gold" onclick="satinal('300 BUNG - 149 TL')">Satın Al</button></div>
+<div class="card"><h3>600 BUNG</h3><div class="price">279 TL</div><button class="btn-gold" onclick="satinal('600 BUNG - 279 TL')">Satın Al</button></div>
+<div class="card"><h3>1200 BUNG</h3><div class="price">499 TL</div><button class="btn-gold" onclick="satinal('1200 BUNG - 499 TL')">Satın Al</button></div>
 
-<div id="odeme" class="iban-box">
-<h2 style="color:#FFD700;">💳 ÖDEME BİLGİLERİ</h2>
-<p id="paketText" style="font-weight:900;font-size:22px;margin:12px 0;"></p>
-<hr style="border:none;border-top:1px solid #333;margin:15px 0">
-<p>Alıcı: <b style="color:#fff;">İbrahim Yağaş</b></p>
-<p style="margin-top:10px;">IBAN:<br><b style="word-break:break-all;">TR28 0011 1000 0000 0114 9747 83</b></p>
-
-<input type="text" id="nick" class="nick-input" placeholder="Roblox Nickini Yaz (Örn: robloxturk2027)">
-
-<button class="btn-white" onclick="copyIban()">📋 IBAN'I KOPYALA</button>
-<button class="btn-wp" onclick="sendWp()">✅ ÖDEME YAPTIM - DEKONT GÖNDER</button>
-
-<p style="font-size:11px;color:#666;margin-top:14px;">Ödeme sonrası dekont + nick gönder, BUNG'lar 5 dk içinde yüklenir.<br>Destek: 0542 136 40 81</p>
+<div class="iban-box">
+<b>IBAN: TR00 0000 0000 0000</b><br>
+<small>Alıcı: Ad Soyad - Açıklamaya Roblox Nickini yaz</small>
 </div>
 
-<div id="toast">IBAN Kopyalandı ✅</div>
+<input id="nick" class="nick-input" placeholder="Roblox Nickini Yaz">
+<input id="paketsec" type="hidden">
+<button class="btn-gold" onclick="odemeYap()" style="background:#fff">Ödeme Yaptım, Sipariş Ver</button>
+<div id="durum"></div>
 
-<div class="footer">
-robloxturk2027 © 2026 - Tüm Hakları Saklıdır<br>
-Resmi BUNG Satış Mağazası. Roblox ile bağlantılı değildir.
-</div>
+<p style="text-align:center;color:#555;font-size:11px;margin-top:30px">© 2026 robloxturk2027 - Tüm hakları saklıdır</p>
 
 <script>
-let secili="";
-function showPay(p){secili=p;document.getElementById('paketText').innerText=p;document.getElementById('odeme').style.display='block';document.getElementById('odeme').scrollIntoView({behavior:'smooth'});}
-function showToast(t){let x=document.getElementById('toast');x.innerText=t;x.style.display='block';setTimeout(()=>{x.style.display='none'},2500);}
-function copyIban(){navigator.clipboard.writeText("TR280011100000000114974783");showToast("IBAN Kopyalandı ✅");}
-function sendWp(){
- let n=document.getElementById('nick').value.trim();
- if(n.length<3){showToast("Nickini yaz kanka!");return;}
- let msg=`Merhaba, ${secili} ödemesini yaptım. Roblox Nick: ${n} - robloxturk2027 sitesinden geldim. Dekontu atıyorum.`;
- window.open('https://wa.me/905421364081?text='+encodeURIComponent(msg),'_blank');
-}
-</script>
-</body>
-</html>
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbx7JzAcLFqs_1tAp9tGMmR7uhilrndTZelVnUc4yZi9UVXqz3RpNQg1YAE1kyZd3D48/exec";
+function satinal(paket){
+ document.getElementById('paketsec').value =
