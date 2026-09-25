@@ -1,26 +1,18 @@
-<!DOCTYPE html>
-<html lang="tr">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Admin - ROBLOXTURK</title>
-</head>
-<body style="background:#0f0f14;color:white;font-family:Arial;padding:20px;">
-<h2>📦 Gelen Siparişler</h2>
-<p style="color:#aaa;font-size:12px;">Sadece senin telefonunda gözükür</p>
-<div id="list" style="margin-top:15px;"></div>
-<button onclick="localStorage.clear();location.reload()" style="margin-top:20px;background:#ff4444;color:white;border:none;padding:10px 15px;border-radius:8px;width:100%;font-weight:bold;">Tüm Siparişleri Temizle</button>
+<!DOCTYPE html><html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width"><title>Admin</title><style>body{background:#111;color:#fff;font-family:Arial;padding:15px}table{width:100%;border-collapse:collapse;margin-top:15px}th,td{border:1px solid #333;padding:8px;font-size:13px}th{background:#222;color:#FFD700}button{padding:5px 10px;border:none;border-radius:6px;font-weight:bold;cursor:pointer}.onay{background:#00ff88}.bekle{background:orange}</style></head><body>
+<h2 style="color:#FFD700">BUNG Admin</h2><button onclick="load()" style="background:#FFD700;padding:10px 20px;margin-bottom:10px">YENİLE 🔄</button>
+<table id="t"></table>
 <script>
-let orders = JSON.parse(localStorage.getItem('rb_orders')||'[]');
-let list = document.getElementById('list');
-if(orders.length==0){
-  list.innerHTML='<div style="background:#1c1c2a;padding:15px;border-radius:10px;color:#666;">Sipariş yok</div>';
-}else{
-  orders.slice().reverse().forEach(o=>{
-    let isim = o.user || o.username || o.name || 'Yazmadı';
-    list.innerHTML+=`<div style="background:#1c1c2a;padding:12px;border-radius:10px;margin-bottom:10px;border-left:3px solid #00ff88;"><b style="color:gold;">#${o.id}</b> - ${o.product}<br>Fiyat: ${o.price}<br>Roblox: <b style="color:#00ff88;">${isim}</b><br><small style="color:#888;">${o.date}</small></div>`;
-  });
+const URL="https://script.google.com/macros/s/AKfycbwqfWXj4d139M_dv37Smj4ZxMemFUBahtCWS-hhK7PRdoRp17S5P_zYr4nYFQmryJo5/exec";
+async function load(){
+  const res=await fetch(URL+"?action=get"); const data=await res.json();
+  let h="<tr><th>#</th><th>TARİH</th><th>NİCK</th><th>PAKET</th><th>DURUM</th><th>İŞLEM</th></tr>";
+  for(let i=1;i<data.length;i++){
+    let durum=data[i][3]||"";
+    let btn=durum.includes("BEK")?`<button class=bekle onclick="onayla(${i+1})">ONAYLA</button>`:`<span style=color:#0f0>✅</span>`;
+    h+=`<tr><td>${i}</td><td>${data[i][0]}</td><td>${data[i][1]}</td><td>${data[i][2]}</td><td>${durum}</td><td>${btn}</td></tr>`;
+  }
+  document.getElementById("t").innerHTML=h;
 }
-</script>
-</body>
-</html>
+async function onayla(row){ if(!confirm(row+" nolu siparişi onaylıyor musun?"))return; await fetch(URL+"?action=onayla&row="+row); alert("Onaylandı!"); load(); }
+load();
+</script></body></html>
