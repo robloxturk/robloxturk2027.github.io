@@ -1,46 +1,43 @@
-<!DOCTYPE html>
-<html lang="tr">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>BLOXTURK</title>
-<style>
-body{background:#0f0f14;color:white;font-family:Arial;margin:0}
-.header{background:#1c1c2a;padding:15px;text-align:center;font-weight:bold;font-size:20px;color:gold;position:sticky;top:0}
-.container{padding:15px;display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.card{background:#1c1c2a;border-radius:12px;padding:12px;text-align:center;border:1px solid #2a2a3a}
-.card img{width:100%;border-radius:8px;aspect-ratio:1/1;object-fit:cover;background:#2a2a2a}
-.card h3{font-size:14px;margin:8px 0;height:32px}
-.card.price{color:#00ff88;font-weight:bold;margin-bottom:8px}
-.card button{background:gold;color:black;border:none;padding:8px 0;width:100%;border-radius:8px;font-weight:bold}
-.modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.85);z-index:100;align-items:center;justify-content:center;padding:20px}
-.modal-box{background:#1c1c2a;width:100%;max-width:360px;border-radius:16px;padding:20px;border:1px solid #333}
-.modal-box input{width:100%;padding:12px;border-radius:8px;border:1px solid #333;background:#0f0f14;color:white;margin:10px 0;box-sizing:border-box}
-.btn-order{background:#00ff88;color:black;width:100%;padding:12px;border-radius:8px;border:none;font-weight:bold}
-.btn-close{background:#333;color:white;width:100%;padding:12px;border-radius:8px;border:none;margin-top:8px}
-</style>
-</head>
-<body>
-<div class="header">⭐ BLOXTURK ⭐</div>
-<div class="container" id="products"></div>
-<div class="modal" id="modal"><div class="modal-box">
-<h2 id="mTitle"></h2><p id="mPrice" style="color:#00ff88"></p>
-<input id="robloxUser" placeholder="Roblox Kullanıcı Adın">
-<button class="btn-order" onclick="sendWhatsApp()">WhatsApp ile Sipariş Ver</button>
-<button class="btn-close" onclick="document.getElementById('modal').style.display='none'">Vazgeç</button>
-</div></div>
+<!-- ===== BUNG ÖDEME BÖLÜMÜ ===== -->
+<section id="bung-market" style="background:#111; padding:20px;">
+<h2 style="color:gold; text-align:center;">💎 BUNG MARKET - SANAL PARA</h2>
+<p style="text-align:center; color:#aaa;">TL ile öde, BUNG kazan, oyunda harca</p>
+
+<div style="display:grid; grid-template-columns:1fr 1fr; gap:15px;">
+
+<div style="background:#1e1e1e; border:2px solid gold; border-radius:15px; padding:15px; text-align:center;">
+<h3>💰 120 BUNG</h3>
+<p>69 TL</p>
+<button onclick="pay('120bung')" style="background:gold; width:100%; padding:10px; border-radius:10px; font-weight:bold;">BUNG AL</button>
+</div>
+
+<div style="background:#1e1e1e; border:2px solid gold; border-radius:15px; padding:15px; text-align:center;">
+<h3>💰 300 BUNG</h3>
+<p>149 TL</p>
+<button onclick="pay('300bung')" style="background:gold; width:100%; padding:10px; border-radius:10px; font-weight:bold;">BUNG AL</button>
+</div>
+
+<div style="background:#1e1e1e; border:2px solid gold; border-radius:15px; padding:15px; text-align:center;">
+<h3>💎 600 BUNG</h3>
+<p>279 TL</p>
+<button onclick="pay('600bung')" style="background:gold; width:100%; padding:10px; border-radius:10px; font-weight:bold;">BUNG AL</button>
+</div>
+
+<div style="background:#1e1e1e; border:2px solid gold; border-radius:15px; padding:15px; text-align:center;">
+<h3>👑 1500 BUNG</h3>
+<p>649 TL</p>
+<button onclick="pay('1500bung')" style="background:gold; width:100%; padding:10px; border-radius:10px; font-weight:bold;">BUNG AL</button>
+</div>
+
+</div>
+</section>
+
 <script>
-const products=[{name:"Headless Horseman",price:"650 TL"},{name:"Dominus Empyreus",price:"1200 TL"},{name:"Valkyrie Helm",price:"800 TL"},{name:"Korblox",price:"950 TL"},{name:"1000 Robux",price:"250 TL"},{name:"500 Robux",price:"130 TL"}];
-let sel=null;const c=document.getElementById('products');
-products.forEach((p,i)=>{c.innerHTML+=`<div class="card"><img src="https://via.placeholder.com/300?text=${p.name}"><h3>${p.name}</h3><div class="price">${p.price}</div><button onclick="openModal(${i})">AL</button></div>`});
-function openModal(i){sel=products[i];document.getElementById('mTitle').innerText=sel.name;document.getElementById('mPrice').innerText=sel.price;document.getElementById('modal').style.display='flex';}
-function sendWhatsApp(){
-let user=document.getElementById('robloxUser').value.trim();
-if(!user){alert('Roblox adını yaz!');return;}
-let id=Math.floor(1000+Math.random()*9000);
-let text=`*YENI SIPARIS #${id}*%0A%0A📦 Urun: ${sel.name}%0A💰 Fiyat: ${sel.price}%0A👤 Roblox: ${user}%0A%0ALutfen onaylayin!`;
-window.open(`https://wa.me/905421364081?text=${text}`,'_blank');
-setTimeout(()=>{if(confirm('2. numaraya da gonderilsin mi?')){window.open(`https://wa.me/905016844833?text=${text}`,'_blank');}},800);
-document.getElementById('modal').style.display='none';
+function pay(paket){
+  // PayTR linkleri buraya gelecek
+  if(paket=='120bung') window.open('PAYTR_LINK_120','_blank');
+  if(paket=='300bung') window.open('PAYTR_LINK_300','_blank');
+  if(paket=='600bung') window.open('PAYTR_LINK_600','_blank');
+  if(paket=='1500bung') window.open('PAYTR_LINK_1500','_blank');
 }
-</script></body></html>
+</script>
