@@ -1,43 +1,56 @@
-<!-- ===== BUNG ÖDEME BÖLÜMÜ ===== -->
-<section id="bung-market" style="background:#111; padding:20px;">
-<h2 style="color:gold; text-align:center;">💎 BUNG MARKET - SANAL PARA</h2>
-<p style="text-align:center; color:#aaa;">TL ile öde, BUNG kazan, oyunda harca</p>
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BUNG MARKET | Resmi Satış</title>
+<style>
+body{background:#0d0d0d;color:#fff;font-family:Arial, sans-serif;margin:0;padding:15px}
+h1{text-align:center;color:#FFD700;margin-top:10px}
+.card{background:#1c1c1c;border:2px solid #FFD700;border-radius:20px;padding:20px;margin:0 auto 15px auto;max-width:400px;text-align:center}
+.price{color:#FFD700;font-size:26px;font-weight:bold}
+.btn{background:#FFD700;color:#000;border:none;width:100%;padding:15px;border-radius:12px;font-weight:bold;font-size:16px;margin-top:12px;cursor:pointer}
+.iban-box{background:#111;border:1px dashed #FFD700;padding:20px;border-radius:15px;margin:20px auto;max-width:400px;text-align:center;display:none;position:sticky;bottom:10px}
+</style>
+</head>
+<body>
 
-<div style="display:grid; grid-template-columns:1fr 1fr; gap:15px;">
+<h1>💎 BUNG MARKET</h1>
+<p style="text-align:center;color:#aaa;">7/24 Otomatik Teslimat - PayTR çok yakında</p>
 
-<div style="background:#1e1e1e; border:2px solid gold; border-radius:15px; padding:15px; text-align:center;">
-<h3>💰 120 BUNG</h3>
-<p>69 TL</p>
-<button onclick="pay('120bung')" style="background:gold; width:100%; padding:10px; border-radius:10px; font-weight:bold;">BUNG AL</button>
+<div class="card"><h3>120 BUNG</h3><div class="price">69 TL</div><button class="btn" onclick="showPay('120 BUNG - 69 TL')">BUNG AL</button></div>
+<div class="card"><h3>300 BUNG</h3><div class="price">149 TL</div><button class="btn" onclick="showPay('300 BUNG - 149 TL')">BUNG AL</button></div>
+<div class="card"><h3>600 BUNG</h3><div class="price">279 TL</div><button class="btn" onclick="showPay('600 BUNG - 279 TL')">BUNG AL</button></div>
+<div class="card"><h3>1500 BUNG</h3><div class="price">649 TL</div><button class="btn" onclick="showPay('1500 BUNG - 649 TL')">BUNG AL</button></div>
+
+<div id="odeme" class="iban-box">
+<h3 style="color:gold;margin:0;">💳 ÖDEME BİLGİLERİ</h3>
+<p id="paketText" style="font-weight:bold;font-size:18px;"></p>
+<hr style="border-color:#333">
+<p style="margin:5px;"><b>Alıcı:</b> İbrahim Yağaş</p>
+<p style="margin:5px;"><b>IBAN:</b><br><span id="iban" style="font-size:16px;letter-spacing:1px;">TR28 0011 1000 0000 0114 9747 83</span></p>
+<button class="btn" style="background:#fff;" onclick="copyIban()">IBAN'I KOPYALA</button>
+<button class="btn" style="background:#25D366;color:white;" onclick="sendWhatsapp()">✅ ÖDEME YAPTIM - DEKONT GÖNDER</button>
+<p style="font-size:11px;color:#777;">Ödeme sonrası BUNG 5 dk içinde yüklenir.</p>
 </div>
-
-<div style="background:#1e1e1e; border:2px solid gold; border-radius:15px; padding:15px; text-align:center;">
-<h3>💰 300 BUNG</h3>
-<p>149 TL</p>
-<button onclick="pay('300bung')" style="background:gold; width:100%; padding:10px; border-radius:10px; font-weight:bold;">BUNG AL</button>
-</div>
-
-<div style="background:#1e1e1e; border:2px solid gold; border-radius:15px; padding:15px; text-align:center;">
-<h3>💎 600 BUNG</h3>
-<p>279 TL</p>
-<button onclick="pay('600bung')" style="background:gold; width:100%; padding:10px; border-radius:10px; font-weight:bold;">BUNG AL</button>
-</div>
-
-<div style="background:#1e1e1e; border:2px solid gold; border-radius:15px; padding:15px; text-align:center;">
-<h3>👑 1500 BUNG</h3>
-<p>649 TL</p>
-<button onclick="pay('1500bung')" style="background:gold; width:100%; padding:10px; border-radius:10px; font-weight:bold;">BUNG AL</button>
-</div>
-
-</div>
-</section>
 
 <script>
-function pay(paket){
-  // PayTR linkleri buraya gelecek
-  if(paket=='120bung') window.open('PAYTR_LINK_120','_blank');
-  if(paket=='300bung') window.open('PAYTR_LINK_300','_blank');
-  if(paket=='600bung') window.open('PAYTR_LINK_600','_blank');
-  if(paket=='1500bung') window.open('PAYTR_LINK_1500','_blank');
+let seciliPaket = "";
+function showPay(paket){
+  seciliPaket = paket;
+  document.getElementById('paketText').innerText = paket;
+  document.getElementById('odeme').style.display = 'block';
+  window.scrollTo(0, document.body.scrollHeight);
+}
+function copyIban(){
+  navigator.clipboard.writeText("TR280011100000000114974783");
+  alert("IBAN kopyalandı: TR28 0011 1000 0000 0114 9747 83");
+}
+function sendWhatsapp(){
+  let numara = "905421364081"; // Ana numaran
+  let mesaj = `Merhaba İbrahim, ${seciliPaket} için ödeme yaptım. Alıcı: İbrahim Yağaş - TR28 0011 1000 0000 0114 9747 83 Dekontu ekliyorum. Nickimi yazıyorum.`;
+  window.open('https://wa.me/'+numara+'?text='+encodeURIComponent(mesaj),'_blank');
 }
 </script>
+</body>
+</html>
