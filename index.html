@@ -3,54 +3,84 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>BUNG MARKET | Resmi Satış</title>
+<title>BUNG MARKET - Resmi BUNG Satış</title>
 <style>
-body{background:#0d0d0d;color:#fff;font-family:Arial, sans-serif;margin:0;padding:15px}
-h1{text-align:center;color:#FFD700;margin-top:10px}
-.card{background:#1c1c1c;border:2px solid #FFD700;border-radius:20px;padding:20px;margin:0 auto 15px auto;max-width:400px;text-align:center}
-.price{color:#FFD700;font-size:26px;font-weight:bold}
-.btn{background:#FFD700;color:#000;border:none;width:100%;padding:15px;border-radius:12px;font-weight:bold;font-size:16px;margin-top:12px;cursor:pointer}
-.iban-box{background:#111;border:1px dashed #FFD700;padding:20px;border-radius:15px;margin:20px auto;max-width:400px;text-align:center;display:none;position:sticky;bottom:10px}
+  *{box-sizing:border-box}
+  body{background:#0a0a0a;color:#ffffff;font-family: -apple-system, BlinkMacSystemFont, Arial, sans-serif;margin:0;padding:12px}
+  .header{text-align:center;padding:20px 10px}
+  .header h1{color:#FFD700;margin:0;font-size:28px;letter-spacing:1px}
+  .header p{color:#888;margin:8px 0 0 0;font-size:14px}
+  .container{display:grid;grid-template-columns:1fr 1fr;gap:12px;max-width:600px;margin:0 auto}
+  @media(max-width:400px){.container{grid-template-columns:1fr}}
+  .card{background:#1a1a1a;border:1.5px solid #FFD700;border-radius:16px;padding:16px;text-align:center;position:relative}
+  .card h3{color:#FFD700 !important;font-size:18px;margin:5px 0 8px 0;font-weight:900}
+  .card .price{color:#ffffff !important;font-size:18px;font-weight:bold;margin-bottom:12px}
+  .btn{background:#FFD700;color:#000;border:none;width:100%;padding:13px;border-radius:10px;font-weight:900;font-size:14px;cursor:pointer}
+  .btn:active{transform:scale(0.97)}
+  #odeme{display:none;max-width:600px;margin:20px auto;background:#151515;border:2px dashed #FFD700;border-radius:16px;padding:20px;text-align:center;animation:gel 0.3s ease}
+  @keyframes gel{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+  .iban{font-size:16px;font-weight:bold;letter-spacing:0.5px;background:#000;padding:10px;border-radius:8px;margin:10px 0;border:1px solid #333;color:#FFD700}
+  .small{font-size:12px;color:#888;margin-top:10px}
 </style>
 </head>
 <body>
 
-<h1>💎 BUNG MARKET</h1>
-<p style="text-align:center;color:#aaa;">7/24 Otomatik Teslimat - PayTR çok yakında</p>
+<div class="header">
+  <h1>💎 BUNG MARKET</h1>
+  <p>TL gönder, BUNG anında hesabına gelsin • 7/24 Aktif</p>
+</div>
 
-<div class="card"><h3>120 BUNG</h3><div class="price">69 TL</div><button class="btn" onclick="showPay('120 BUNG - 69 TL')">BUNG AL</button></div>
-<div class="card"><h3>300 BUNG</h3><div class="price">149 TL</div><button class="btn" onclick="showPay('300 BUNG - 149 TL')">BUNG AL</button></div>
-<div class="card"><h3>600 BUNG</h3><div class="price">279 TL</div><button class="btn" onclick="showPay('600 BUNG - 279 TL')">BUNG AL</button></div>
-<div class="card"><h3>1500 BUNG</h3><div class="price">649 TL</div><button class="btn" onclick="showPay('1500 BUNG - 649 TL')">BUNG AL</button></div>
+<div class="container">
+  <div class="card">
+    <div>💰</div>
+    <h3>120 BUNG</h3>
+    <div class="price">69 TL</div>
+    <button class="btn" onclick="satinAl('120 BUNG - 69 TL')">BUNG AL</button>
+  </div>
+  <div class="card">
+    <div>💰</div>
+    <h3>300 BUNG</h3>
+    <div class="price">149 TL</div>
+    <button class="btn" onclick="satinAl('300 BUNG - 149 TL')">BUNG AL</button>
+  </div>
+  <div class="card">
+    <div>💎</div>
+    <h3>600 BUNG</h3>
+    <div class="price">279 TL</div>
+    <button class="btn" onclick="satinAl('600 BUNG - 279 TL')">BUNG AL</button>
+  </div>
+  <div class="card">
+    <div>👑</div>
+    <h3>1500 BUNG</h3>
+    <div class="price">649 TL</div>
+    <button class="btn" onclick="satinAl('1500 BUNG - 649 TL')">BUNG AL</button>
+  </div>
+</div>
 
-<div id="odeme" class="iban-box">
-<h3 style="color:gold;margin:0;">💳 ÖDEME BİLGİLERİ</h3>
-<p id="paketText" style="font-weight:bold;font-size:18px;"></p>
-<hr style="border-color:#333">
-<p style="margin:5px;"><b>Alıcı:</b> İbrahim Yağaş</p>
-<p style="margin:5px;"><b>IBAN:</b><br><span id="iban" style="font-size:16px;letter-spacing:1px;">TR28 0011 1000 0000 0114 9747 83</span></p>
-<button class="btn" style="background:#fff;" onclick="copyIban()">IBAN'I KOPYALA</button>
-<button class="btn" style="background:#25D366;color:white;" onclick="sendWhatsapp()">✅ ÖDEME YAPTIM - DEKONT GÖNDER</button>
-<p style="font-size:11px;color:#777;">Ödeme sonrası BUNG 5 dk içinde yüklenir.</p>
+<div id="odeme">
+  <h3 style="color:#FFD700;margin:0;">💳 ÖDEME YAP</h3>
+  <p id="paketText" style="font-size:18px;font-weight:bold;margin:15px 0;color:#fff;"></p>
+  
+  <div style="text-align:left;background:#0e0e0e;padding:12px;border-radius:10px;font-size:14px">
+    <b>Alıcı:</b> İbrahim Yağaş<br>
+    <b>Banka:</b> QNB Finansbank
+  </div>
+
+  <div class="iban" id="ibanText">TR28 0011 1000 0000 0114 9747 83</div>
+  
+  <button class="btn" style="background:#fff;" onclick="kopyala()">📋 IBAN'I KOPYALA</button>
+  <button class="btn" style="background:#25D366;color:#fff;margin-top:10px;" onclick="whatsapp()">✅ ÖDEME YAPTIM - WHATSAPP'A GÖNDER</button>
+  
+  <p class="small">Ödeme sonrası dekontu WhatsApp'a atarsan BUNG 5 dakika içinde yüklenir.<br>İletişim: 0542 136 40 81</p>
+</div>
+
+<div style="text-align:center;color:#555;font-size:11px;margin-top:25px;padding:10px">
+  © 2026 BUNG MARKET - Tüm hakları saklıdır<br>PayTR entegrasyonu çok yakında
 </div>
 
 <script>
-let seciliPaket = "";
-function showPay(paket){
-  seciliPaket = paket;
-  document.getElementById('paketText').innerText = paket;
-  document.getElementById('odeme').style.display = 'block';
-  window.scrollTo(0, document.body.scrollHeight);
-}
-function copyIban(){
-  navigator.clipboard.writeText("TR280011100000000114974783");
-  alert("IBAN kopyalandı: TR28 0011 1000 0000 0114 9747 83");
-}
-function sendWhatsapp(){
-  let numara = "905421364081"; // Ana numaran
-  let mesaj = `Merhaba İbrahim, ${seciliPaket} için ödeme yaptım. Alıcı: İbrahim Yağaş - TR28 0011 1000 0000 0114 9747 83 Dekontu ekliyorum. Nickimi yazıyorum.`;
-  window.open('https://wa.me/'+numara+'?text='+encodeURIComponent(mesaj),'_blank');
-}
-</script>
-</body>
-</html>
+let secilen = "";
+function satinAl(paket){
+  secilen = paket;
+  document.getElementById('paketText').innerText = paket + " için ödeme";
+  document.getElementById('
