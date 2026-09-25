@@ -3,41 +3,22 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>ROBLOXTURK</title>
+<title>ROBLOXTURK - Otomatik Teslimat</title>
 <script>
-// === ÖDEME AYARIN ===
 const IBAN = "TR28 0011 1000 0000 0114 9747 83";
 const ALICI = "İbrahim Yağaş";
-// ====================
 </script>
 </head>
 <body style="background:#0f0f14;color:white;font-family:Arial;margin:0;">
 
-<h1 style="text-align:center;padding:20px;">🔥 ROBLOXTURK 🔥</h1>
+<h1 style="text-align:center;padding:25px 0 5px;margin:0;">🔥 ROBLOXTURK 🔥</h1>
+<p style="text-align:center;color:#00ff88;margin:0 0 20px;">7/24 AI Otomatik Sipariş</p>
 
-<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:15px;max-width:700px;margin:auto;">
-<div style="background:#1c1c2a;padding:15px;border-radius:12px;text-align:center;"><h3>🧪 Fly</h3><b style="color:#00ff88;">169 TL</b><br><button onclick="openAI('Fly Potion','169 TL')" style="margin-top:8px;width:100%;padding:10px;background:#00ff88;border:none;border-radius:8px;font-weight:bold;">Al</button></div>
-<div style="background:#1c1c2a;padding:15px;border-radius:12px;text-align:center;"><h3>🐎 Ride</h3><b style="color:#00ff88;">135 TL</b><br><button onclick="openAI('Ride Potion','135 TL')" style="margin-top:8px;width:100%;padding:10px;background:#00ff88;border:none;border-radius:8px;font-weight:bold;">Al</button></div>
-<div style="background:#1c1c2a;padding:15px;border-radius:12px;text-align:center;border:2px solid gold;"><h3>💎 Blox 2x</h3><b style="color:#00ff88;">199 TL</b><br><button onclick="openAI('Blox Fruits 2x','199 TL')" style="margin-top:8px;width:100%;padding:10px;background:#00ff88;border:none;border-radius:8px;font-weight:bold;">Al</button></div>
-<div style="background:#1c1c2a;padding:15px;border-radius:12px;text-align:center;"><h3>🏠 Brook</h3><b style="color:#00ff88;">125 TL</b><br><button onclick="openAI('Brookhaven Premium','125 TL')" style="margin-top:8px;width:100%;padding:10px;background:#00ff88;border:none;border-radius:8px;font-weight:bold;">Al</button></div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;padding:15px;max-width:750px;margin:auto;">
+  <div style="background:#1c1c2a;padding:16px;border-radius:14px;text-align:center;border:1px solid #2a2a40;"><h3>🧪 Fly Potion</h3><div style="color:#00ff88;font-size:20px;font-weight:bold;">169 TL</div><button onclick="openAI('Fly Potion','169 TL')" style="margin-top:10px;background:#00ff88;border:none;padding:10px;width:100%;border-radius:8px;font-weight:bold;cursor:pointer;">AI ile Al</button></div>
+  <div style="background:#1c1c2a;padding:16px;border-radius:14px;text-align:center;border:1px solid #2a2a40;"><h3>🐎 Ride Potion</h3><div style="color:#00ff88;font-size:20px;font-weight:bold;">135 TL</div><button onclick="openAI('Ride Potion','135 TL')" style="margin-top:10px;background:#00ff88;border:none;padding:10px;width:100%;border-radius:8px;font-weight:bold;cursor:pointer;">AI ile Al</button></div>
+  <div style="background:#1c1c2a;padding:16px;border-radius:14px;text-align:center;border:2px solid gold;"><div style="background:gold;color:black;font-size:10px;padding:2px 8px;border-radius:10px;display:inline-block;font-weight:bold;">ÇOK SATAN</div><h3>💎 Blox 2x Para</h3><div style="color:#00ff88;font-size:20px;font-weight:bold;">199 TL</div><button onclick="openAI('Blox Fruits 2x Para','199 TL')" style="margin-top:10px;background:#00ff88;border:none;padding:10px;width:100%;border-radius:8px;font-weight:bold;cursor:pointer;">AI ile Al</button></div>
+  <div style="background:#1c1c2a;padding:16px;border-radius:14px;text-align:center;border:1px solid #2a2a40;"><h3>🏠 Brookhaven Premium</h3><div style="color:#00ff88;font-size:20px;font-weight:bold;">125 TL</div><button onclick="openAI('Brookhaven Premium','125 TL')" style="margin-top:10px;background:#00ff88;border:none;padding:10px;width:100%;border-radius:8px;font-weight:bold;cursor:pointer;">AI ile Al</button></div>
 </div>
 
-<div id="ai-btn" style="position:fixed;bottom:20px;right:20px;background:#00ff88;color:black;width:60px;height:60px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:26px;cursor:pointer;z-index:9999;">AI</div>
-<div id="ai-box" style="display:none;position:fixed;bottom:90px;right:10px;left:10px;max-width:350px;margin-left:auto;height:450px;background:#12121f;border-radius:15px;border:1px solid #333;z-index:9999;flex-direction:column;overflow:hidden;">
-<div style="background:#00ff88;padding:12px;color:black;font-weight:bold;display:flex;justify-content:space-between;"><span>🤖 AI</span><span id="ai-close" style="cursor:pointer;">X</span></div>
-<div id="ai-msgs" style="flex:1;padding:10px;overflow:auto;font-size:14px;"></div>
-<div style="padding:8px;display:flex;gap:5px;background:#1a1a2e;"><input id="ai-input" style="flex:1;padding:10px;border-radius:8px;border:none;background:#2a2a40;color:white;" placeholder="Yaz..."><button id="ai-send" style="padding:10px 15px;background:#00ff88;border:none;border-radius:8px;">➤</button></div>
-</div>
-
-<div id="paybox" style="display:none;position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);background:#1c1c2a;padding:20px;border-radius:15px;border:2px solid #00ff88;z-index:10000;width:85%;max-width:340px;text-align:center;">
-<div style="font-size:40px;">✅</div>
-<h3>Sipariş Alındı!</h3>
-<p id="payinfo" style="background:#111;padding:12px;border-radius:10px;font-size:13px;text-align:left;line-height:1.6;"></p>
-<button onclick="this.parentElement.style.display='none'" style="width:100%;padding:10px;background:#00ff88;border:none;border-radius:8px;font-weight:bold;">Kapat</button>
-</div>
-
-<script>
-let step=0, curProd="", curPrice="";
-const msgs=document.getElementById('ai-msgs'), box=document.getElementById('ai-box'), btn=document.getElementById('ai-btn'), close=document.getElementById('ai-close'), input=document.getElementById('ai-input'), send=document.getElementById('ai-send'), paybox=document.getElementById('paybox'), payinfo=document.getElementById('payinfo');
-function openAI(p,pr){curProd=p; curPrice=pr; box.style.display='flex'; box.style.flexDirection='column'; msgs.innerHTML='<div style=background:#2a2a40;padding:10px;border-radius:10px;margin-bottom:5px;>'+p+' - '+pr+' seçtin. Roblox adını yaz:</div>'; step=1;}
-btn.onclick=()=>{box.style.display=box.style.display==='flex'?'none':'flex'; box.style.flexDirection='column'; if(msgs.innerHTML==='')msgs.innerHTML='<div style=background
+<div id="ai-btn" style="position:fixed;bottom:20px;right:20px;background:#00ff88;color:black;width:60px;height:60px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:26px;cursor:pointer;z-index:9999;font-weight:bold;">AI</div>
