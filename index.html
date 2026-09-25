@@ -4,58 +4,32 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>robloxturk2027 - Resmi BUNG Satış Mağazası</title>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@700;900&display=swap" rel="stylesheet">
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@700;900&display=swap');
-*{box-sizing:border-box;margin:0;padding:0}
-body{background:#080808;color:#fff;font-family:Arial,sans-serif;padding:20px;max-width:500px;margin:auto}
-.top-bar{text-align:center;padding:20px 0 10px 0}
-.top-bar h1{font-family:'Outfit',sans-serif;font-size:32px;color:#FFD700}
-.top-bar p{color:#999;font-size:13px;margin-top:6px}
-.badge-row{display:flex;gap:8px;justify-content:center;margin:15px 0;flex-wrap:wrap}
-.badge{background:#1a1a1a;border:1px solid #333;padding:6px 12px;border-radius:20px;font-size:12px}
-.card{background:linear-gradient(145deg,#1e1e1e,#141414);border:2px solid #222;border-radius:18px;padding:20px;margin:12px 0;text-align:center}
-.card:hover{border-color:#FFD700;box-shadow:0 0 25px rgba(255,215,0,0.15)}
-.card.popular{border-color:#FFD700;position:relative}
-.card.popular::before{content:'EN ÇOK SATAN';position:absolute;top:-11px;left:50%;transform:translateX(-50%);background:#FFD700;color:#000;font-size:10px;font-weight:900;padding:3px 10px;border-radius:10px}
-.card h3{color:#fff;font-size:22px}
-.price{color:#FFD700;font-size:32px;font-weight:900;margin:10px 0}
-.btn-gold{background:#FFD700;color:#000;border:none;width:100%;padding:14px;border-radius:12px;font-weight:900;font-size:15px;cursor:pointer}
-.iban-box{background:#111;border:2px dashed #FFD700;padding:14px;border-radius:12px;margin:20px 0;text-align:center}
-.nick-input{width:100%;padding:16px;border-radius:12px;border:2px solid #333;background:#111;color:#fff;margin:8px 0}
-.nick-input:focus{border-color:#FFD700;outline:none}
-#durum{display:none;padding:12px;border-radius:10px;margin-top:12px;text-align:center;font-weight:bold}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#080808;color:#fff;font-family:Arial,sans-serif;padding:16px;max-width:480px;margin:0 auto}
+.header{text-align:center;padding:20px 0}
+.header h1{font-family:'Outfit',sans-serif;color:#FFD700;font-size:32px}
+.header p{color:#888;font-size:12px;margin-top:8px;letter-spacing:1px}
+.badges{display:flex;gap:6px;justify-content:center;margin:12px 0;flex-wrap:wrap}
+.badges span{background:#1a1a1a;border:1px solid #333;padding:5px 10px;border-radius:20px;font-size:11px}
+.card{background:#181818;border:2px solid #262626;border-radius:18px;padding:22px 18px;margin:14px 0;text-align:center;transition:0.2s}
+.card.active{border-color:#FFD700;box-shadow:0 0 20px rgba(255,215,0,0.2)}
+.card h2{font-size:22px}
+.card .price{color:#FFD700;font-size:36px;font-weight:900;margin:10px 0}
+.btn{width:100%;background:#FFD700;color:#000;border:none;padding:15px;border-radius:12px;font-weight:900;font-size:16px;cursor:pointer}
+.btn:active{transform:scale(0.96)}
+.iban{border:2px dashed #FFD700;border-radius:14px;padding:16px;text-align:center;margin:22px 0;background:#111}
+.iban b{font-size:15px}
+.iban small{color:#aaa;display:block;margin-top:4px}
+.input{width:100%;background:#121212;border:2px solid #333;color:#fff;padding:16px;border-radius:12px;font-size:15px;margin:8px 0}
+.input:focus{border-color:#FFD700;outline:none}
+.btn-white{background:#fff;color:#000;margin-top:10px}
+#durum{display:none;padding:14px;border-radius:12px;margin-top:12px;text-align:center;font-weight:900}
+.footer{text-align:center;color:#444;font-size:11px;margin:30px 0}
 </style>
 </head>
 <body>
 
-<div class="top-bar">
-<h1>💎 robloxturk2027</h1>
-<p>TL GÖNDER • BUNG 5 DAKİKADA HESABINDA • 7/24 AKTİF</p>
-<div class="badge-row">
-<div class="badge">⚡ Anında Teslimat</div>
-<div class="badge">🔒 Güvenli Ödeme</div>
-<div class="badge">💬 WhatsApp Destek</div>
-</div>
-</div>
-
-<div class="card"><h3>120 BUNG</h3><div class="price">69 TL</div><button class="btn-gold" onclick="satinal('120 BUNG - 69 TL')">Satın Al</button></div>
-<div class="card popular"><h3>300 BUNG</h3><div class="price">149 TL</div><button class="btn-gold" onclick="satinal('300 BUNG - 149 TL')">Satın Al</button></div>
-<div class="card"><h3>600 BUNG</h3><div class="price">279 TL</div><button class="btn-gold" onclick="satinal('600 BUNG - 279 TL')">Satın Al</button></div>
-<div class="card"><h3>1200 BUNG</h3><div class="price">499 TL</div><button class="btn-gold" onclick="satinal('1200 BUNG - 499 TL')">Satın Al</button></div>
-
-<div class="iban-box">
-<b>IBAN: TR00 0000 0000 0000</b><br>
-<small>Alıcı: Ad Soyad - Açıklamaya Roblox Nickini yaz</small>
-</div>
-
-<input id="nick" class="nick-input" placeholder="Roblox Nickini Yaz">
-<input id="paketsec" type="hidden">
-<button class="btn-gold" onclick="odemeYap()" style="background:#fff">Ödeme Yaptım, Sipariş Ver</button>
-<div id="durum"></div>
-
-<p style="text-align:center;color:#555;font-size:11px;margin-top:30px">© 2026 robloxturk2027 - Tüm hakları saklıdır</p>
-
-<script>
-const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbx7JzAcLFqs_1tAp9tGMmR7uhilrndTZelVnUc4yZi9UVXqz3RpNQg1YAE1kyZd3D48/exec";
-function satinal(paket){
- document.getElementById('paketsec').value =
+<div class="header">
+<h1>💎 rob
