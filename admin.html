@@ -19,14 +19,30 @@ th{background:#222;color:#FFD700}
 <button class="btn-yenile" onclick="load()">YENİLE 🔄</button>
 <table id="t"></table>
 <script>
-const URL="https://script.google.com/macros/s/AKfycbyrB_SOTtfQXIH4-fcMKwWu2aldjldvmav6uk7Bo2uMNBv0fLXbVdm1LEagghsuyHqZ/exec";
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyrB_SOTtfQXIH4-fcMKwWu2aldjldvmav6uk7Bo2uMNBv0fLXbVdm1LEagghsuyHqZ/exec";
 async function load(){
-  const r=await fetch(URL+"?action=get"); const d=await r.json();
-  let h="<tr><th>#</th><th>TARİH</th><th>NİCK</th><th>PAKET</th><th>DURUM</th><th>İŞLEM</th></tr>";
-  for(let i=1;i<d.length;i++){let durum=d[i][3]; let btn=durum.includes("BEK")?`<button class=btn-onay onclick="onayla(${i+1})">ONAYLA</button>`:`<span style=color:#0f0>✅</span>`; h+=`<tr><td>${i}</td><td>${d[i][0]}</td><td>${d[i][1]}</td><td>${d[i][2]}</td><td>${durum}</td><td>${btn}</td></tr>`}
-  document.getElementById("t").innerHTML=h;
+  try{
+    document.getElementById("t").innerHTML = "<tr><td>Yükleniyor...</td></tr>";
+    const res = await fetch(SCRIPT_URL + "?action=get");
+    const data = await res.json();
+    let html = "<tr><th>#</th><th>TARİH</th><th>NİCK</th><th>PAKET</th><th>DURUM</th><th>İŞLEM</th></tr>";
+    for(let i=1; i<data.length; i++){
+      let durum = data[i][3] || "";
+      let btn = durum.includes("BEK")? `<button class="btn-onay" onclick="onayla(${i+1})">ONAYLA</button>` : `<span style="color:#0f0">✅ ONAYLANDI</span>`;
+      html += `<tr><td>${i}</td><td>${data[i][0]}</td><td>${data[i][1]}</td><td>${data[i][2]}</td><td>${durum}</td><td>${btn}</td></tr>`;
+    }
+    document.getElementById("t").innerHTML = html;
+  } catch(err){
+    document.getElementById("t").innerHTML = "HATA: " + err;
+    alert("Hata: " + err);
+  }
 }
-async function onayla(row){if(!confirm(row+" onayla?"))return; await fetch(URL+"?action=onayla&row="+row); alert("Onaylandı!"); load();}
+async function onayla(row){
+  if(!confirm(row + " nolu siparişi onaylıyor musun?")) return;
+  await fetch(SCRIPT_URL + "?action=onayla&row=" + row);
+  alert("Onaylandı kanka!");
+  load();
+}
 load();
 </script>
 </body>
