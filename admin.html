@@ -7,18 +7,18 @@
 </head>
 <body style="background:#0f0f14;color:white;font-family:Arial;padding:20px;">
 <h2>📦 Gelen Siparişler</h2>
-<p style="color:#aaa;font-size:12px;">Sadece senin telefonunda gözükür (başkası göremez)</p>
+<p style="color:#aaa;font-size:12px;">Sadece senin telefonunda gözükür</p>
 <div id="list" style="margin-top:15px;"></div>
-<button onclick="localStorage.clear();location.reload()" style="margin-top:20px;background:#ff4444;color:white;border:none;padding:10px 15px;border-radius:8px;">Tüm Siparişleri Sil</button>
-
+<button onclick="localStorage.clear();location.reload()" style="margin-top:20px;background:#ff4444;color:white;border:none;padding:10px 15px;border-radius:8px;width:100%;font-weight:bold;">Tüm Siparişleri Temizle</button>
 <script>
 let orders = JSON.parse(localStorage.getItem('rb_orders')||'[]');
 let list = document.getElementById('list');
 if(orders.length==0){
-  list.innerHTML='<div style="background:#1c1c2a;padding:15px;border-radius:10px;color:#666;">Henüz sipariş yok kanka<br><br>Az önce vatan41 aldı ya, o senin telefonun hafızasına kaydoldu. Bu sayfada çıkması lazım.</div>';
+  list.innerHTML='<div style="background:#1c1c2a;padding:15px;border-radius:10px;color:#666;">Sipariş yok</div>';
 }else{
-  orders.reverse().forEach(o=>{
-    list.innerHTML+=`<div style="background:#1c1c2a;padding:12px;border-radius:10px;margin-bottom:10px;border-left:3px solid #00ff88;"><b style="color:gold;">#${o.id}</b> - ${o.product}<br>Fiyat: ${o.price}<br>Roblox: <b style="color:#00ff88;">${o.username}</b><br><small style="color:#888;">${o.date}</small></div>`;
+  orders.slice().reverse().forEach(o=>{
+    let isim = o.user || o.username || o.name || 'Yazmadı';
+    list.innerHTML+=`<div style="background:#1c1c2a;padding:12px;border-radius:10px;margin-bottom:10px;border-left:3px solid #00ff88;"><b style="color:gold;">#${o.id}</b> - ${o.product}<br>Fiyat: ${o.price}<br>Roblox: <b style="color:#00ff88;">${isim}</b><br><small style="color:#888;">${o.date}</small></div>`;
   });
 }
 </script>
