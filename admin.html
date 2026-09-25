@@ -1,18 +1,33 @@
-<!DOCTYPE html><html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width"><title>Admin</title><style>body{background:#111;color:#fff;font-family:Arial;padding:15px}table{width:100%;border-collapse:collapse;margin-top:15px}th,td{border:1px solid #333;padding:8px;font-size:13px}th{background:#222;color:#FFD700}button{padding:5px 10px;border:none;border-radius:6px;font-weight:bold;cursor:pointer}.onay{background:#00ff88}.bekle{background:orange}</style></head><body>
-<h2 style="color:#FFD700">BUNG Admin</h2><button onclick="load()" style="background:#FFD700;padding:10px 20px;margin-bottom:10px">YENİLE 🔄</button>
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BUNG Admin</title>
+<style>
+body{background:#111;color:#fff;font-family:Arial;padding:15px}
+h2{color:#FFD700}
+table{width:100%;border-collapse:collapse;margin-top:15px}
+th,td{border:1px solid #333;padding:8px;font-size:13px}
+th{background:#222;color:#FFD700}
+.btn-yenile{background:#FFD700;color:#000;padding:10px 20px;border:none;border-radius:8px;font-weight:bold;cursor:pointer}
+.btn-onay{background:orange;color:#000;padding:6px 12px;border:none;border-radius:6px;font-weight:bold;cursor:pointer}
+</style>
+</head>
+<body>
+<h2>🔑 BUNG Admin - Yeni Link Aktif</h2>
+<button class="btn-yenile" onclick="load()">YENİLE 🔄</button>
 <table id="t"></table>
 <script>
-const URL="https://script.google.com/macros/s/AKfycbwqfWXj4d139M_dv37Smj4ZxMemFUBahtCWS-hhK7PRdoRp17S5P_zYr4nYFQmryJo5/exec";
+const URL="https://script.google.com/macros/s/AKfycbyrB_SOTtfQXIH4-fcMKwWu2aldjldvmav6uk7Bo2uMNBv0fLXbVdm1LEagghsuyHqZ/exec";
 async function load(){
-  const res=await fetch(URL+"?action=get"); const data=await res.json();
+  const r=await fetch(URL+"?action=get"); const d=await r.json();
   let h="<tr><th>#</th><th>TARİH</th><th>NİCK</th><th>PAKET</th><th>DURUM</th><th>İŞLEM</th></tr>";
-  for(let i=1;i<data.length;i++){
-    let durum=data[i][3]||"";
-    let btn=durum.includes("BEK")?`<button class=bekle onclick="onayla(${i+1})">ONAYLA</button>`:`<span style=color:#0f0>✅</span>`;
-    h+=`<tr><td>${i}</td><td>${data[i][0]}</td><td>${data[i][1]}</td><td>${data[i][2]}</td><td>${durum}</td><td>${btn}</td></tr>`;
-  }
+  for(let i=1;i<d.length;i++){let durum=d[i][3]; let btn=durum.includes("BEK")?`<button class=btn-onay onclick="onayla(${i+1})">ONAYLA</button>`:`<span style=color:#0f0>✅</span>`; h+=`<tr><td>${i}</td><td>${d[i][0]}</td><td>${d[i][1]}</td><td>${d[i][2]}</td><td>${durum}</td><td>${btn}</td></tr>`}
   document.getElementById("t").innerHTML=h;
 }
-async function onayla(row){ if(!confirm(row+" nolu siparişi onaylıyor musun?"))return; await fetch(URL+"?action=onayla&row="+row); alert("Onaylandı!"); load(); }
+async function onayla(row){if(!confirm(row+" onayla?"))return; await fetch(URL+"?action=onayla&row="+row); alert("Onaylandı!"); load();}
 load();
-</script></body></html>
+</script>
+</body>
+</html>
