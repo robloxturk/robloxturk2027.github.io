@@ -1,35 +1,31 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>robloxturk2027 - Resmi BUNG Satış Mağazası</title>
-<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@700;900&display=swap" rel="stylesheet">
-<style>
-*{margin:0;padding:0;box-sizing:border-box}
-body{background:#080808;color:#fff;font-family:Arial,sans-serif;padding:16px;max-width:480px;margin:0 auto}
-.header{text-align:center;padding:20px 0}
-.header h1{font-family:'Outfit',sans-serif;color:#FFD700;font-size:32px}
-.header p{color:#888;font-size:12px;margin-top:8px;letter-spacing:1px}
-.badges{display:flex;gap:6px;justify-content:center;margin:12px 0;flex-wrap:wrap}
-.badges span{background:#1a1a1a;border:1px solid #333;padding:5px 10px;border-radius:20px;font-size:11px}
-.card{background:#181818;border:2px solid #262626;border-radius:18px;padding:22px 18px;margin:14px 0;text-align:center;transition:0.2s}
-.card.active{border-color:#FFD700;box-shadow:0 0 20px rgba(255,215,0,0.2)}
-.card h2{font-size:22px}
-.card .price{color:#FFD700;font-size:36px;font-weight:900;margin:10px 0}
-.btn{width:100%;background:#FFD700;color:#000;border:none;padding:15px;border-radius:12px;font-weight:900;font-size:16px;cursor:pointer}
-.btn:active{transform:scale(0.96)}
-.iban{border:2px dashed #FFD700;border-radius:14px;padding:16px;text-align:center;margin:22px 0;background:#111}
-.iban b{font-size:15px}
-.iban small{color:#aaa;display:block;margin-top:4px}
-.input{width:100%;background:#121212;border:2px solid #333;color:#fff;padding:16px;border-radius:12px;font-size:15px;margin:8px 0}
-.input:focus{border-color:#FFD700;outline:none}
-.btn-white{background:#fff;color:#000;margin-top:10px}
-#durum{display:none;padding:14px;border-radius:12px;margin-top:12px;text-align:center;font-weight:900}
-.footer{text-align:center;color:#444;font-size:11px;margin:30px 0}
-</style>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>robloxturk2027</title>
+<style>body{background:#080808;color:#fff;font-family:Arial;padding:20px;max-width:500px;margin:auto}.card{background:#1e1e1e;border:2px solid #222;border-radius:18px;padding:20px;margin:12px 0;text-align:center}.price{color:#FFD700;font-size:32px;font-weight:900;margin:10px 0}.btn{background:#FFD700;color:#000;border:none;width:100%;padding:14px;border-radius:12px;font-weight:900;cursor:pointer;margin-top:10px}.inp{width:100%;padding:16px;border-radius:12px;border:2px solid #333;background:#111;color:#fff;margin-top:15px}#msg{display:none;padding:12px;border-radius:10px;margin-top:10px;text-align:center}</style>
 </head>
 <body>
-
-<div class="header">
-<h1>💎 rob
+<h2 style="text-align:center;color:#FFD700">💎 robloxturk2027</h2>
+<div class="card"><h3>120 BUNG - 69 TL</h3><button class="btn" onclick="sec('120 BUNG - 69 TL')">SEÇ</button></div>
+<div class="card"><h3>300 BUNG - 149 TL</h3><button class="btn" onclick="sec('300 BUNG - 149 TL')">SEÇ</button></div>
+<div class="card"><h3>600 BUNG - 279 TL</h3><button class="btn" onclick="sec('600 BUNG - 279 TL')">SEÇ</button></div>
+<input id="nick" class="inp" placeholder="Roblox Nick: vatan41">
+<input id="paket" class="inp" placeholder="Seçilen Paket" readonly style="background:#222">
+<button class="btn" style="background:#fff;margin-top:20px" onclick="gonder()">ÖDEME YAPTIM</button>
+<div id="msg"></div>
+<script>
+let secili="";
+const URL="https://script.google.com/macros/s/AKfycbx7JzAcLFqs_1tAp9tGMmR7uhilrndTZelVnUc4yZi9UVXqz3RpNQg1YAE1kyZd3D48/exec";
+function sec(p){secili=p;document.getElementById('paket').value=p;alert(p+' seçildi! Şimdi nick yaz ve Ödeme Yaptım de')}
+async function gonder(){
+ const nick=document.getElementById('nick').value;
+ const m=document.getElementById('msg');
+ if(!nick||!secili){alert('Kanka önce paket SEÇ ve nick yaz');return}
+ m.style.display='block'; m.style.background='#333'; m.innerText='Gönderiliyor...';
+ fetch(URL+"?action=ekle&nick="+encodeURIComponent(nick)+"&paket="+encodeURIComponent(secili),{mode:'no-cors'});
+ setTimeout(()=>{m.style.background='#00c853'; m.innerText='✅ ALINDI! '+nick+' - '+secili;},1000);
+}
+</script>
+</body>
+</html>
